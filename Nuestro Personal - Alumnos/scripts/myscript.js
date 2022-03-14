@@ -48,32 +48,22 @@ empleado.addEventListener("click",e=>{
   const prev_btn = btn_container.querySelector(".fa-chevron-left");
   
   if(e.target == next_btn){
-    console.log("a")
-    const fragmento = document.createDocumentFragment();
+    console.log("a");
     personales.forEach(personal=>{
-      let templateEmpleo = empleado.cloneNode(true);
-      templateEmpleo.querySelector("img").setAttribute("src",personal.foto);
-      templateEmpleo.querySelector("h4").textContent=personal.nombre;
-      templateEmpleo.querySelectorAll("p")[0].textContent=personal.trabajo;
-      templateEmpleo.querySelectorAll("p")[1].textContent=personal.text;
-      templateEmpleo.querySelector(".next-btn").dataset.id=personal.id;
-      templateEmpleo.querySelector(".prev-btn").dataset.id=personal.id;
-      fragmento.appendChild(templateEmpleo);
-    })
-    empleado.appendChild(fragmento);
+      empleado.querySelector("img").setAttribute("src",personal.foto);
+      empleado.querySelector("h4").textContent=personal.nombre;
+      empleado.querySelectorAll("p")[0].textContent=personal.trabajo;
+      empleado.querySelectorAll("p")[1].textContent=personal.text;
+      empleado.querySelector(".next-btn").dataset.id=personal.id+1;
+    });
   }else if(e.target == prev_btn){
     console.log("prev");
-    const fragmento = document.createDocumentFragment();
     personales.forEach(personal=>{
-      let templateEmpleo = empleado.cloneNode(true);
-      templateEmpleo.querySelector("img").setAttribute("src",personal.foto);
-      templateEmpleo.querySelector("h4").textContent=personal.nombre;
-      templateEmpleo.querySelectorAll("p")[0].textContent=personal.trabajo;
-      templateEmpleo.querySelectorAll("p")[1].textContent=personal.text;
-      templateEmpleo.querySelector(".next-btn").dataset.id=personal.id;
-      templateEmpleo.querySelector(".prev-btn").dataset.id=personal.id;
-      fragmento.appendChild(templateEmpleo);
+      empleado.querySelector("img").setAttribute("src",personal.foto);
+      empleado.querySelector("h4").textContent=personal.nombre;
+      empleado.querySelectorAll("p")[0].textContent=personal.trabajo;
+      empleado.querySelectorAll("p")[1].textContent=personal.text;
+      empleado.querySelector(".prev-btn").dataset.id=personal.id-1;
     })
-    empleado.appendChild(fragmento);
   }
 });
